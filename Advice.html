@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<!-- 
+  WCAG COACHING NOTE: Every HTML file should start with <!DOCTYPE html>.
+  This tells the browser "this is a modern HTML document." The original 
+  file was missing this, which can cause browsers to render pages 
+  inconsistently and confuse screen readers.
+-->
+
+<!-- 
+  WCAG COACHING NOTE: The <html> tag now includes lang="en". 
+  This is required for WCAG 2.1 AA (Success Criterion 3.1.1 - Language of Page).
+  Screen readers use this to know which language to read the page in.
+  Without it, a screen reader might read English text with the wrong pronunciation engine.
+  The original file had no lang attribute at all.
+-->
+<html lang="en">
+
+<head>
+  <title>Eric L. Hutton - Advice for Students Wanting to Pursue a PhD in Chinese Thought</title>
+
+  <!-- 
+    WCAG COACHING NOTE: charset is now set to UTF-8 (was iso-8859-1).
+    UTF-8 supports a much wider range of characters including Chinese characters,
+    special punctuation, and other Unicode symbols you may use in your writing.
+    This also fixes a WCAG 1.4.4 concern around text rendering.
+  -->
+  <meta charset="UTF-8">
+
+  <!-- 
+    WCAG COACHING NOTE: This viewport meta tag is NEW — it was not in the original.
+    It is required for mobile accessibility (WCAG 1.4.4 - Resize Text).
+    Without it, mobile devices zoom out to show a shrunken desktop view,
+    making text very small and hard to read.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* 
+      WCAG COACHING NOTE: All styling is now in CSS, replacing deprecated HTML 
+      presentation attributes (bgcolor, text, link, vlink, align, face, size, border).
+    */
+
+    body {
+      font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+      font-size: 12.5pt;
+      color: #000000;
+      background-color: #ffffff;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 16px;
+      /* WCAG COACHING NOTE: max-width + margin:auto replaces the old centered fixed-width table layout. */
+    }
+
+    a { color: #990000; text-decoration: none; }
+
+    a:visited {
+      color: #666666;
+      /* WCAG COACHING NOTE: Changed from #999999 (fails contrast 3.4:1) to #666666 (passes 5.7:1).
+         WCAG 1.4.3 requires a minimum contrast ratio of 4.5:1 for normal text. */
+    }
+
+    a:hover, a:focus {
+      text-decoration: underline;
+      outline: 2px solid #990000;
+      /* WCAG COACHING NOTE: :focus style is NEW and required by WCAG 2.4.7.
+         Keyboard users tab through links — they must be able to see which link is active.
+         Without :focus styles, keyboard-only users have no visual indicator of their position. */
+    }
+
+    .site-header { background-color: #990000; padding: 4px 0; }
+    .site-header a img { display: block; }
+
+    .color-bar {
+      height: 6px;
+      background: linear-gradient(to right, #999999 20%, #000000 80%);
+      margin-bottom: 4px;
+      /* WCAG COACHING NOTE: Replaces two decorative spacer GIF images with CSS.
+         Decorative images should never be used for layout. CSS handles this correctly
+         and screen readers ignore it entirely. */
+    }
+
+    .site-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #cccccc;
+      margin-bottom: 16px;
+      /* WCAG COACHING NOTE: Navigation links now live in a semantic <nav> element (see HTML).
+         Screen readers announce "navigation" when they reach a <nav> element,
+         helping users understand the page layout. WCAG 1.3.1. */
+    }
+
+    .site-nav .logo-area img { vertical-align: middle; }
+    .site-nav .nav-links a { margin-left: 12px; font-size: 11pt; }
+
+    h1 {
+      font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+      font-size: 14pt;
+      text-align: center;
+      margin-bottom: 8px;
+      /* WCAG COACHING NOTE: The page title was originally <b> inside a <font> tag.
+         That looks like a heading but is not — screen readers treat it as plain bold text.
+         <h1> creates a real navigable heading. WCAG 1.3.1 and 2.4.6. */
+    }
+
+    .disclaimer { font-style: italic; margin-bottom: 16px; }
+
+    ol li {
+      margin-bottom: 20px;
+      line-height: 1.6;
+      /* WCAG COACHING NOTE: Line height and item spacing improves readability
+         for users with dyslexia or cognitive disabilities. WCAG 1.4.8. */
+    }
+
+    .site-footer {
+      border-top: 1px solid #000000;
+      margin-top: 24px;
+      padding-top: 12px;
+      text-align: center;
+      font-size: 10pt;
+    }
+
+    .site-footer .copyright { font-size: 8pt; margin-top: 8px; }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- 
+    WCAG COACHING NOTE: <header> is a semantic HTML5 landmark element (NEW).
+    It tells screen readers "this is the top of the page header area."
+    The original used a layout <table>, which is not semantic and confuses screen readers.
+    Tables should only be used for actual data, never for page layout. WCAG 1.3.1.
+  -->
+  <header class="site-header">
+    <!-- 
+      WCAG COACHING NOTE: Logo image now has descriptive alt text.
+      The original had no alt on this linked image — a WCAG 1.1.1 failure.
+      For images that are also links, alt text must describe the link destination.
+    -->
+    <a href="https://hutton.philosophy.utah.edu">
+      <img src="UUlogotype_WonR.gif" width="185" height="21"
+        alt="University of Utah - return to Eric Hutton's homepage">
+    </a>
+  </header>
+
+  <!-- aria-hidden="true" tells screen readers to skip this decorative element entirely. -->
+  <div class="color-bar" aria-hidden="true"></div>
+
+  <!-- 
+    WCAG COACHING NOTE: <nav> is a semantic HTML5 landmark (NEW).
+    Screen readers announce this region and users can jump to it directly.
+    aria-label="Site navigation" distinguishes this from the footer nav. WCAG 2.4.1.
+  -->
+  <nav class="site-nav" aria-label="Site navigation">
+    <div class="logo-area">
+      <!-- 
+        WCAG COACHING NOTE: Decorative branding images use alt="" (empty alt).
+        Empty alt="" = "skip this image silently."
+        Missing alt (no attribute) = screen reader reads the filename aloud — very disruptive.
+        Always include alt="" on decorative images. Never omit the alt attribute. WCAG 1.1.1.
+      -->
+      <img src="phi.gif" width="51" height="58" alt="">
+      <img src="philosophy.jpg" width="187" height="42" alt="">
+    </div>
+    <div class="nav-links">
+      <a href="https://philosophy.utah.edu">home</a>
+      <a href="https://philosophy.utah.edu/directory/index.php">people</a>
+      <a href="https://philosophy.utah.edu/undergraduate/courses.php">courses</a>
+    </div>
+  </nav>
+
+  <!-- 
+    WCAG COACHING NOTE: <main> landmark (NEW). Marks the primary content of the page.
+    Screen readers can jump directly here, skipping the repeated header/nav.
+    Only one <main> per page. WCAG 2.4.1 - Bypass Blocks.
+  -->
+  <main>
+
+    <!-- 
+      WCAG COACHING NOTE: <h1> is the page's main heading (NEW — was just bold text before).
+      Every page needs exactly one <h1> describing what the page is about.
+      Screen reader users navigate by headings — fake headings (bold text) are invisible to them.
+      WCAG 1.3.1 and 2.4.6.
+    -->
+    <h1>Advice for Students Wanting to Pursue a PhD in Chinese Thought</h1>
+
+    <!-- 
+      WCAG COACHING NOTE: Disclaimer was originally floating as plain text inside a <ul>.
+      Only <li> elements belong inside <ul> — anything else is invalid HTML.
+      Now a proper <p> tag. Valid HTML is foundational to accessibility.
+    -->
+    <p class="disclaimer">
+      Please note that the following represents my own individual opinion, rather than a consensus
+      view in the field. Students who want to pursue a PhD in Chinese thought should consult with
+      other professors before making any decisions about preparing for and applying to PhD programs.
+      Also, applicants who meet the criteria described below are not necessarily guaranteed admission
+      to Utah's graduate program.
+    </p>
+
+    <!-- 
+      WCAG COACHING NOTE: Changed from <ul> (unordered) to <ol> (ordered list).
+      These are clearly sequential topics — an ordered list is more semantically accurate.
+      WCAG 1.3.1 - Info and Relationships.
+
+      FUTURE EDITING TIP: To add a new advice item, add a new <li> inside this <ol>.
+      Start each item with <strong>Title:</strong> followed by your paragraph text.
+      Use <strong> not <b> — <strong> signals importance to screen readers, <b> does not.
+    -->
+    <ol>
+
+      <li>
+        <!-- 
+          WCAG COACHING NOTE: <strong> replaces <b> throughout.
+          <strong> = semantically important text (screen readers may emphasize it).
+          <b> = visual bold only, no semantic meaning. Always prefer <strong> over <b>.
+        -->
+        <strong>Understand academe:</strong> For better or worse, academia is divided into distinct
+        disciplines. Now, you can study Chinese thought from a number of these different disciplinary
+        perspectives, including Philosophy, Religious Studies, Asian Languages, or History, but it is
+        important to bear in mind that each has its own practices and standards. Accordingly, the
+        preparation needed for undertaking a PhD degree in these fields differs. For example,
+        Philosophy PhD graduate programs are generally not willing to admit students who do not have
+        a BA degree in Philosophy. (If you want to get into a PhD program in an area for which you
+        do not hold a BA degree, getting an MA degree first is often a good way to transition into
+        that area. In the case of Philosophy in particular,
+        <a href="https://ase.tufts.edu/philosophy/programs/">Tufts</a>
+        <!-- 
+          WCAG COACHING NOTE: Link updated to https:// (was http://).
+          FUTURE EDITING TIP: Always use https:// for links when the site supports it.
+          You can test by typing the https:// version in your browser — if it loads, use it.
+        -->
+        provides an excellent MA program of this sort.) Along with requiring different kinds of
+        preparation for the PhD, the differences among disciplines mean that your job opportunities
+        and expectations after you have completed the degree will likewise vary according to your
+        field. Thus, Philosophy departments are unlikely to hire people who have a PhD in something
+        other than Philosophy, though there are occasional exceptions. Furthermore, it is not uncommon
+        for beginning professors to teach only one course in their area of expertise per year, and to
+        teach the rest of their courses for the year in areas outside their specialization. Hence, if
+        you were to earn a PhD in Philosophy with a focus on Chinese thought, as a starting professor
+        you might be allowed to teach a course on Chinese philosophy, but you might also be required
+        to teach Introduction to Philosophy, Ethics, Logic, or other basic philosophy courses. By
+        contrast, if you were to earn a PhD in Asian Languages with a focus on Chinese thought, you
+        might be allowed to teach a course on Chinese thought, but you might also be asked to teach a
+        general survey course on Chinese culture or Chinese language courses. For these reasons, when
+        thinking about pursuing a PhD in Chinese thought, it is important to choose carefully the
+        field in which you want to work. This will largely be a matter of personal preference, but
+        you should be sure to consider the kinds of teaching you would want to do (or avoid) after
+        finishing the PhD.
+      </li>
+
+      <li>
+        <strong>Learn the requisite languages early:</strong> To do graduate work on Chinese thought,
+        a student ideally should know <strong>both</strong> classical Chinese <strong>and</strong>
+        modern Chinese. While the most important and widely studied works of Chinese thought are
+        written in classical Chinese, the reason for studying modern Chinese is that one should also
+        be able to read contemporary Chinese scholarship and communicate with modern Chinese scholars.
+        (Japanese scholars have also produced a significant number of studies of Chinese thought, so
+        it is very useful to know some Japanese as well.) In the US, classical Chinese courses often
+        have as a pre-requisite at least two years of modern Chinese. Furthermore, one needs at least
+        two years of training in classical Chinese to be able to work with philosophical texts at a
+        reasonable level of proficiency. Thus, you should have at minimum about four years of language
+        training in Chinese to undertake a PhD focusing in Chinese thought. Now if you have not
+        previously had this training, you could try to learn the languages at the same time you start
+        a PhD program. However, such an approach is not advisable for a number of reasons. First, not
+        all institutions have the ability to provide advanced training in both modern and classical
+        Chinese. If you attend such an institution, you will have to take time out from your PhD
+        program to visit another institution that does offer such training or you will have to go
+        overseas. Taking a year or more out from a PhD program is not desirable, because it interrupts
+        the flow of your studies in whatever your primary discipline is. Second, and in a similar vein,
+        even if an institution does offer all the language training you would need, taking such courses
+        is still a distraction from a PhD program, which is focused around the
+        <em>content</em>
+        <!-- 
+          WCAG COACHING NOTE: <em> replaces <i> here because the italics carry meaning
+          (emphasis on the word "content"). 
+          Use <em> when italics change the meaning of a sentence.
+          Use <i> for purely typographic conventions like book titles.
+        -->
+        of a specific field. Third, Chinese is a difficult language, and not all people enjoy
+        studying and working with it. It would be very unfortunate for you to enroll in a PhD program
+        to study Chinese thought, only to discover that you hate the language or simply cannot master
+        it, since you would then either have to come up with a new focus or quit the program. For
+        these reasons, I recommend that anyone who is thinking seriously about pursuing a PhD in
+        Chinese thought should start studying Chinese as soon as possible, and should try to have at
+        least two years of modern Chinese and a year of classical Chinese before applying for the PhD.
+        It will make you a stronger candidate for admission and will also position you to make the
+        best use of your time as a PhD student. There are a number of good language training programs
+        abroad, and I especially recommend spending a year or two in mainland China or Taiwan making
+        sure you have a high level of proficiency before undertaking the PhD. (My own training was at
+        the institution now known as <a href="https://iclp.ntu.edu.tw/tw/">ICLP</a>, which I still recommend.)
+      </li>
+
+      <li>
+        <strong>Acquire a general understanding of Chinese history and culture:</strong> The
+        development of Chinese thought has taken place alongside, and often in reaction to,
+        developments in politics, literature, art, economics, and so on. For that reason, it is very
+        helpful to know something about these other aspects of Chinese history and culture. If you
+        pursue a PhD in an Asian Languages or History department, learning about these subjects will
+        probably form a natural part of your training. However, if you enter a PhD program in
+        Philosophy or Religious Studies, you will likely have less opportunity to study these matters,
+        since those departments will generally not offer courses about them, and taking courses about
+        them outside your department may be inconvenient or even frowned upon, since they detract from
+        your main course of study. The easiest way to ensure that you have the appropriate background
+        knowledge is to take such courses while still an undergraduate. Otherwise, an option to
+        consider is doing an MA in East Asian Studies or Asian Languages before doing a PhD in
+        Philosophy or Religious Studies. There are several universities around the country that offer
+        such MA programs. Note, though, that some programs may require a certain level of language
+        proficiency as a criterion for admission, so you will need to investigate them carefully
+        before applying, if you have no previous Chinese language training.
+      </li>
+
+      <li>
+        <strong>Get familiar with the different approaches used by scholars:</strong> Even though
+        scholars of Chinese thought in a sense all share a common subject matter, their approaches to
+        the materials can be quite different and in some ways fundamentally incompatible. Except for a
+        very few places, in the US it is rare for a university to have more than one professor who
+        specializes in Chinese thought. This means that if you undertake a PhD focusing on this
+        subject, you will likely be spending a great deal of time working with the one person at your
+        school who does research in this area. However, if your understanding and approach to the
+        material differs greatly from that of the professor who would be your main advisor, you are
+        likely to wind up in conflict, and such conflict will make completing the PhD difficult or
+        even impossible. The simple solution is to <strong>read some published work</strong> by the
+        person with whom you are considering studying before you apply to the PhD program. If that
+        person's style of scholarship is not appealing to you or is very unlike the approach you have
+        previously learned, you two are probably not a good match and you should consider applying
+        somewhere else. One article that provides helpful discussion of some of the different
+        approaches in the field is Bryan Van Norden's essay, "What Should Western Philosophy Learn
+        from Chinese Philosophy?" (in Ivanhoe, P.J., ed.
+        <a href="https://www.amazon.com/Chinese-Language-Thought-Culture-Nivison/dp/0812693183/">
+          <i>Chinese Language, Thought, and Culture: Nivison and his Critics</i></a>.
+        Chicago and LaSalle, IL.: Open Court, 1996). Also useful is Sor-hoon Tan's 2016 book
+        <a href="https://www.bloomsbury.com/us/the-bloomsbury-research-handbook-of-chinese-philosophy-methodologies-9781472580313/">
+          <i>The Bloomsbury Research Handbook of Chinese Philosophy Methodologies</i></a>
+        (but see my
+        <a href="https://ndpr.nd.edu/reviews/the-bloomsbury-research-handbook-of-chinese-philosophy-methodologies/">
+          review of the Bloomsbury Handbook</a>
+        <!-- 
+          WCAG COACHING NOTE: Original link text was just "review" — acceptable in context,
+          but expanded here to be clearer when read out of context by screen readers.
+          FUTURE EDITING TIP: Never use "click here", "here", or "link" as link text.
+          Always describe where the link goes. WCAG 2.4.4 - Link Purpose.
+        -->
+        for some caveats).
+
+        <p>Lastly, a very interesting and informative discussion about the different opportunities for
+          pursuing a PhD in Chinese thought took place on the Leiter Reports. The link to that
+          discussion is
+          <!-- 
+            WCAG COACHING NOTE: Original link text was just "here" underlined — a WCAG 2.4.4 failure.
+            "Here" tells a screen reader user nothing about the destination.
+            Screen reader users often navigate by jumping between links — descriptive text is essential.
+            FUTURE EDITING TIP: Never use "here", "click here", or "read more" as link text.
+          -->
+          <a href="http://leiterreports.typepad.com/blog/2006/12/the_situation_f.html">
+            Leiter Reports: discussion on PhD opportunities in Chinese thought</a>,
+          and while I disagree with some things stated in that exchange, I still highly recommend it
+          to students who are thinking of applying to do graduate work in this area.
+        </p>
+      </li>
+
+    </ol>
+  </main>
+
+  <!-- 
+    WCAG COACHING NOTE: <footer> semantic landmark (NEW).
+    Replaces deprecated <center> and <font size="2"> tags.
+    Screen readers can navigate directly to the footer.
+  -->
+  <footer class="site-footer">
+    <nav aria-label="Footer navigation">
+      <!-- 
+        WCAG COACHING NOTE: Footer nav uses a unique aria-label "Footer navigation"
+        to distinguish it from the header "Site navigation" <nav>.
+        Two nav elements with the same label would confuse screen reader users.
+      -->
+      <a href="https://philosophy.utah.edu">home</a> |
+      <a href="https://philosophy.utah.edu/directory/index.php">people</a> |
+      <a href="https://philosophy.utah.edu/undergraduate/courses.php">courses</a>
+      <br>
+      <a href="https://www.hum.utah.edu">college of humanities</a> |
+      <a href="https://www.utah.edu">university of utah</a>
+    </nav>
+    <br>
+    <!-- 
+      WCAG COACHING NOTE: Plain mailto: link replaces the Cloudflare email obfuscation script.
+      The original rendered as [email protected] via JavaScript — inaccessible to 
+      screen readers and users with JavaScript disabled. Plain mailto: links are always accessible.
+      FUTURE EDITING TIP: If your email changes, update it here and in index.html's footer.
+    -->
+    comments: <a href="mailto:eric.hutton@utah.edu">eric.hutton@utah.edu</a>
+
+    <p class="copyright">
+      2021 &copy; University of Utah, College of Humanities<br>
+      * <a href="https://www.utah.edu/disclaimer/">disclaimer</a> *
+    </p>
+  </footer>
+
+</body>
+</html>

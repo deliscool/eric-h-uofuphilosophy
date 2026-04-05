@@ -94,3 +94,4 @@ Never leave `alt` empty for an informative image. Never omit `alt` entirely.
 
 Questions about these files?  
 Del Guerra — [devmoms.com](https://devmoms.com) — info@devmoms.com
+

@@ -39,6 +39,30 @@ Every change is documented with an HTML comment inside the file. Open either fil
 15. Added responsive mobile layout — columns stack vertically on small screens (1.4.10 Reflow)
 16. Added keyboard focus styles — visible outline on all interactive elements (2.4.7 Focus Visible)
 17. Restored complete publications list (2000–2025), including all articles, both book entries with accessible cover images, and all reviews
+18. Fixed decorative dot borders around profile photo using CSS `position: absolute` containers (see below)
+
+---
+
+### About the profile photo dot borders (change #18)
+
+The original page used four small GIF images (`sub_top_right.gif`, `sub_left.gif`, `sub_right.gif`) placed inline with `<br>` tags to create a decorative dot border around the professor's photo. This relied on the old layout table to hold them in position. After the table was removed in the WCAG remediation, the GIFs stacked vertically and no longer framed the photo correctly.
+
+**Fix (by Larry Guerra, April 2026):** A `.photo-frame` container `<div>` with `position: relative` was added around the photo. Each dot GIF was given the class `dots` (`position: absolute`) and a position class (`top-right`, `left`, `right`, `bottom-right`) so they sit precisely at the edges of the photo regardless of screen size.
+
+```html
+<div class="profile-photo">
+  <div class="photo-frame">
+    <img class="hutton-pic" src="HuttonPicture.jpg" alt="Professor Eric L. Hutton">
+
+    <img class="dots top-right" src="sub_top_right.gif" alt="">
+    <img class="dots left" src="sub_left.gif" alt="">
+    <img class="dots right" src="sub_right.gif" alt="">
+    <img class="dots bottom-right" src="sub_top_right.gif" alt="">
+  </div>
+</div>
+```
+
+**If you need to replace the photo:** swap `HuttonPicture.jpg` with your new filename and update the `alt` text to describe the new image. The dot borders will continue to frame the new photo automatically.
 
 ---
 

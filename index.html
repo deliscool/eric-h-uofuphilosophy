@@ -42,19 +42,20 @@ WHAT WAS CHANGED (summary):
      pronunciation rules. Without it, English may be mispronounced.
      WCAG RULE: 3.1.1 (Language of Page) - Level A -->
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-<!-- CHANGE #2: Added viewport meta tag
+  <!-- CHANGE #2: Added viewport meta tag
      WHY: Without this, phones zoom out to show a tiny desktop version.
      WCAG RULE: 1.4.4 (Resize Text) - Level AA -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Eric Hutton - Department of Philosophy - University of Utah</title>
+  <title>Eric Hutton - Department of Philosophy - University of Utah</title>
 
-<style>
-/*
+  <style>
+    /*
   CHANGE #3: All visual styling moved into CSS.
   WHY: The original used deprecated HTML presentation attributes
   (bgcolor, text, link on <body>; face/size on <font> tags).
@@ -64,80 +65,104 @@ WHAT WAS CHANGED (summary):
   when adding publications, updating your bio, or adding courses.
 */
 
-body {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  font-size: 12.5pt;
-  background-color: #ffffff;
-  color: #000000;
-  margin: 0;
-  padding: 0;
-}
+    body {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      font-size: 12.5pt;
+      background-color: #ffffff;
+      color: #000000;
+      margin: 0;
+      padding: 0;
+    }
 
-/* CHANGE #4: Page wrapper replaces <center><table width="600">
+    /* CHANGE #4: Page wrapper replaces <center><table width="600">
    WHY: Tables should only display tabular data, not control layout. */
-.page-wrapper {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
+    .page-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
 
-/* CHANGE #5: Skip link
+    /* CHANGE #5: Skip link
    WHY: Keyboard users must Tab through every link before reaching
    content. This link lets them skip to main content.
    WCAG RULE: 2.4.1 (Bypass Blocks) - Level A */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: #990000;
-  color: #ffffff;
-  padding: 8px 12px;
-  text-decoration: none;
-  font-weight: bold;
-  z-index: 100;
-}
-.skip-link:focus { top: 0; }
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #990000;
+      color: #ffffff;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 100;
+    }
 
-.site-header {
-  background-color: #990000;
-  padding: 4px 0;
-}
+    .skip-link:focus {
+      top: 0;
+    }
 
-.color-bar { display: flex; height: 6px; }
-.color-bar .grey  { background-color: #888888; width: 118px; }
-.color-bar .black { background-color: #000000; flex: 1; }
+    .site-header {
+      background-color: #990000;
+      padding: 4px 0;
+    }
 
-.site-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #cccccc;
-  margin-bottom: 20px;
-}
-.site-nav .logo-area img { vertical-align: middle; }
-.site-nav .nav-links a {
-  color: #7a0000;
-  text-decoration: none;
-  margin-left: 10px;
-}
-.site-nav .nav-links a:hover,
-.site-nav .nav-links a:focus {
-  text-decoration: underline;
-  outline: 2px solid #7a0000;
-  /* WCAG RULE: 2.4.7 (Focus Visible) - Level AA */
-}
+    .color-bar {
+      display: flex;
+      height: 6px;
+    }
 
-/* CHANGE #6: Underlined links throughout body
+    .color-bar .grey {
+      background-color: #888888;
+      width: 118px;
+    }
+
+    .color-bar .black {
+      background-color: #000000;
+      flex: 1;
+    }
+
+    .site-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #cccccc;
+      margin-bottom: 20px;
+    }
+
+    .site-nav .logo-area img {
+      vertical-align: middle;
+    }
+
+    .site-nav .nav-links a {
+      color: #7a0000;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    .site-nav .nav-links a:hover,
+    .site-nav .nav-links a:focus {
+      text-decoration: underline;
+      outline: 2px solid #7a0000;
+      /* WCAG RULE: 2.4.7 (Focus Visible) - Level AA */
+    }
+
+    /* CHANGE #6: Underlined links throughout body
    WHY: Links identified only by color fail for color-blind users.
    WCAG RULE: 1.4.1 (Use of Color) - Level A */
-a { color: #7a0000; text-decoration: underline; }
-a:hover, a:focus {
-  text-decoration: none;
-  outline: 2px solid #7a0000;
-}
+    a {
+      color: #7a0000;
+      text-decoration: underline;
+    }
 
-/* CHANGE #7: Semantic heading hierarchy
+    a:hover,
+    a:focus {
+      text-decoration: none;
+      outline: 2px solid #7a0000;
+    }
+
+    /* CHANGE #7: Semantic heading hierarchy
    WHY: Original had NO headings — just bold text in paragraphs.
    Screen reader users navigate pages by headings.
    WCAG RULE: 1.3.1 (Info and Relationships) - Level A
@@ -147,32 +172,88 @@ a:hover, a:focus {
      h2 = Major section (Biography, Courses, Publications)
      h3 = Subsection within a section (Articles, Reviews)
    Never skip levels. Never use bold text as a heading substitute. */
-h1 { font-size: 1.6em; margin-bottom: 0.1em; }
-h2 {
-  font-size: 1.2em;
-  margin-top: 1.2em;
-  border-bottom: 1px solid #cccccc;
-  padding-bottom: 4px;
-}
-h3 { font-size: 1em; margin-top: 1em; margin-bottom: 0.25em; }
+    h1 {
+      font-size: 1.6em;
+      margin-bottom: 0.1em;
+    }
 
-.profile-section {
+    h2 {
+      font-size: 1.2em;
+      margin-top: 1.2em;
+      border-bottom: 1px solid #cccccc;
+      padding-bottom: 4px;
+    }
+
+    h3 {
+      font-size: 1em;
+      margin-top: 1em;
+      margin-bottom: 0.25em;
+    }
+
+    .profile-section {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+.profile-photo {
+  flex: 1;
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  margin-bottom: 20px;
+  justify-content: end;
 }
-.profile-info  { flex: 1; }
-.profile-photo img { max-width: 220px; height: auto; display: block; }
 
-/* CHANGE #8: Responsive layout for mobile screens
+.photo-frame {
+  position: relative;
+  width: 100%;
+  max-width: 434px;
+  aspect-ratio: 434 / 538;
+}
+
+.hutton-pic {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.dots {
+  position: absolute;
+}
+
+.dots.top-right {
+ top: -13px;
+    left: -13px;
+}
+
+.dots.left {
+  left: -18px;
+    bottom: 0%;
+}
+
+.dots.right {
+  right: -12px;
+  bottom: 0%;
+}
+
+.dots.bottom-right {
+  bottom: -12px;
+    left: -16px;
+}
+
+    /* CHANGE #8: Responsive layout for mobile screens
    WCAG RULE: 1.4.10 (Reflow) - Level AA */
-@media (max-width: 480px) {
-  .profile-section { flex-direction: column; }
-  .profile-photo img { max-width: 100%; }
-}
+    @media (max-width: 700px) {
+      .profile-section {
+        flex-direction: column;
+      }
 
-/*
+      .profile-photo .hutton-pic {
+        max-width: 100%;
+      }
+    }
+
+    /*
   Publication lists
   COACHING TIP: When adding a new publication, add a new <li>
   at the TOP of the appropriate list so newest work appears first.
@@ -189,171 +270,184 @@ h3 { font-size: 1em; margin-top: 1em; margin-bottom: 0.25em; }
     <img src="bookcover.jpg" width="105" height="160"
          alt="Cover of [Book Title] by [Author]">
 */
-.pub-list {
-  padding-left: 1.5em;
-  margin-top: 0.5em;
-}
-.pub-list li {
-  margin-bottom: 1em;
-  line-height: 1.6;
-}
+    .pub-list {
+      padding-left: 1.5em;
+      margin-top: 0.5em;
+    }
 
-/* Book cover layout: image floated right beside the entry text */
-.book-entry {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  margin-bottom: 1em;
-}
-.book-entry .book-text { flex: 1; line-height: 1.6; }
-.book-entry img { flex-shrink: 0; }
+    .pub-list li {
+      margin-bottom: 1em;
+      line-height: 1.6;
+    }
 
-footer {
-  border-top: 1px solid #000000;
-  padding: 16px 0;
-  text-align: center;
-  font-size: 0.85em;
-  margin-top: 20px;
-}
-footer a { color: #7a0000; }
-footer a:hover, footer a:focus {
-  text-decoration: none;
-  outline: 2px solid #7a0000;
-}
-</style>
+    /* Book cover layout: image floated right beside the entry text */
+    .book-entry {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 1em;
+    }
+
+    .book-entry .book-text {
+      flex: 1;
+      line-height: 1.6;
+    }
+
+    .book-entry img {
+      flex-shrink: 0;
+    }
+
+    footer {
+      border-top: 1px solid #000000;
+      padding: 16px 0;
+      text-align: center;
+      font-size: 0.85em;
+      margin-top: 20px;
+    }
+
+    footer a {
+      color: #7a0000;
+    }
+
+    footer a:hover,
+    footer a:focus {
+      text-decoration: none;
+      outline: 2px solid #7a0000;
+    }
+  </style>
 
 </head>
+
 <body>
 
-<!-- CHANGE #9: Skip navigation link
+  <!-- CHANGE #9: Skip navigation link
      Invisible to mouse users. First tab stop for keyboard users.
      WCAG RULE: 2.4.1 (Bypass Blocks) - Level A -->
-<a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<div class="page-wrapper">
+  <div class="page-wrapper">
 
-  <header class="site-header">
-    <!-- CHANGE #10: Descriptive alt text on header logo
+    <header class="site-header">
+      <!-- CHANGE #10: Descriptive alt text on header logo
          WCAG RULE: 1.1.1 (Non-text Content) - Level A -->
-    <a href="https://hutton.philosophy.utah.edu">
-      <img src="UUlogotype_WonR.gif" width="185" height="21"
-           alt="University of Utah - Eric Hutton Philosophy Homepage">
-    </a>
-  </header>
+      <a href="https://hutton.philosophy.utah.edu">
+        <img src="UUlogotype_WonR.gif" width="185" height="21"
+          alt="University of Utah - Eric Hutton Philosophy Homepage">
+      </a>
+    </header>
 
-  <!-- Decorative color bar — hidden from screen readers -->
-  <div class="color-bar" aria-hidden="true">
-    <div class="grey"></div>
-    <div class="black"></div>
-  </div>
+    <!-- Decorative color bar — hidden from screen readers -->
+    <div class="color-bar" aria-hidden="true">
+      <div class="grey"></div>
+      <div class="black"></div>
+    </div>
 
-  <!-- CHANGE #11: <nav> landmark with aria-label
+    <!-- CHANGE #11: <nav> landmark with aria-label
        WCAG RULE: 1.3.1 (Info and Relationships) - Level A -->
-  <nav class="site-nav" aria-label="Site navigation">
-    <div class="logo-area">
-      <img src="phi.gif" width="51" height="58" alt="Phi symbol">
-      <img src="philosophy.jpg" width="187" height="42" alt="Philosophy Department">
-    </div>
-    <div class="nav-links">
-      <a href="https://philosophy.utah.edu">home</a> |
-      <a href="https://philosophy.utah.edu/directory/index.php">people</a> |
-      <a href="https://philosophy.utah.edu/undergraduate/courses.php">courses</a>
-    </div>
-  </nav>
+    <nav class="site-nav" aria-label="Site navigation">
+      <div class="logo-area">
+        <img src="phi.gif" width="51" height="58" alt="Phi symbol">
+        <img src="philosophy.jpg" width="187" height="42" alt="Philosophy Department">
+      </div>
+      <div class="nav-links">
+        <a href="https://philosophy.utah.edu">home</a> |
+        <a href="https://philosophy.utah.edu/directory/index.php">people</a> |
+        <a href="https://philosophy.utah.edu/undergraduate/courses.php">courses</a>
+      </div>
+    </nav>
 
-  <main id="main-content">
+    <main id="main-content">
 
-    <div class="profile-section">
-      <div class="profile-info">
+      <div class="profile-section">
+        <div class="profile-info">
 
-        <!-- CHANGE #12: <h1> replaces bold font tag
+          <!-- CHANGE #12: <h1> replaces bold font tag
              WCAG RULE: 1.3.1 (Info and Relationships) - Level A -->
-        <h1>Eric L. Hutton</h1>
+          <h1>Eric L. Hutton</h1>
 
-        <!-- CHANGE #13: lang="zh-TW" on Chinese text (correct placement)
+          <!-- CHANGE #13: lang="zh-TW" on Chinese text (correct placement)
              WCAG RULE: 3.1.2 (Language of Parts) - Level AA
              COACHING TIP: When adding Chinese text in the future,
              wrap it: <span lang="zh-TW">Chinese text here</span> -->
-        <p lang="zh-TW">何艾克</p>
+          <p lang="zh-TW">何艾克</p>
 
-        <p>Professor<br>
-           Department of Philosophy<br>
-           University of Utah</p>
+          <p>Professor<br>
+            Department of Philosophy<br>
+            University of Utah</p>
 
-        <!-- CHANGE #14: Plain mailto: link replacing broken Cloudflare script
+          <!-- CHANGE #14: Plain mailto: link replacing broken Cloudflare script
              COACHING TIP: If spam becomes a problem, a contact form
              is a more accessible long-term solution. -->
-        <p><a href="mailto:eric.hutton@utah.edu">eric.hutton@utah.edu</a></p>
+          <p><a href="mailto:eric.hutton@utah.edu">eric.hutton@utah.edu</a></p>
 
-        <p><a href="https://hutton.philosophy.utah.edu/CV.pdf">Curriculum Vitae (PDF)</a></p>
+          <p><a href="https://hutton.philosophy.utah.edu/CV.pdf">Curriculum Vitae (PDF)</a></p>
 
-        <p>
-          Campus Office: CTIHB 423<br><br>
-          <strong>Postal Address:</strong><br><br>
-          Department of Philosophy<br>
-          University of Utah<br>
-          CTIHB, 4th floor<br>
-          215 S. Central Campus Drive<br>
-          Salt Lake City, UT 84112<br><br>
-          Phone: (801) 581-8161<br>
-          Fax: (801) 585-5195
-        </p>
+          <p>
+            Campus Office: CTIHB 423<br><br>
+            <strong>Postal Address:</strong><br><br>
+            Department of Philosophy<br>
+            University of Utah<br>
+            CTIHB, 4th floor<br>
+            215 S. Central Campus Drive<br>
+            Salt Lake City, UT 84112<br><br>
+            Phone: (801) 581-8161<br>
+            Fax: (801) 585-5195
+          </p>
 
+        </div>
+
+        <div class="profile-photo">
+  <div class="photo-frame">
+    <img class="hutton-pic" src="HuttonPicture.jpg" alt="Professor Eric L. Hutton">
+
+    <img class="dots top-right" src="sub_top_right.gif" alt="">
+    <img class="dots left" src="sub_left.gif" alt="">
+    <img class="dots right" src="sub_right.gif" alt="">
+    <img class="dots bottom-right" src="sub_top_right.gif" alt="">
+  </div>
+</div>
       </div>
 
-      <div class="profile-photo">
-        <!-- CHANGE #15: Alt text on profile photo; empty alt on decorative borders
-             WCAG RULE: 1.1.1 (Non-text Content) - Level A
-             COACHING TIP: If you replace this photo, update the alt text. -->
-        <img src="sub_top_right.gif" width="60" height="12" alt=""><br>
-        <img src="sub_left.gif" width="18" height="27" alt=""><img
-             src="HuttonPicture.jpg" width="220" height="277"
-             alt="Professor Eric L. Hutton"><img
-             src="sub_right.gif" width="12" height="60" alt=""><br>
-        <img src="sub_top_right.gif" width="60" height="12" alt="">
-      </div>
-    </div>
-
-    <!-- CHANGE #16: <section> + <h2> for each major section
+      <!-- CHANGE #16: <section> + <h2> for each major section
          WHY: "Brief Biography:" was <b> text — screen readers cannot
          identify bold text as a section heading.
          WCAG RULE: 1.3.1 (Info and Relationships) - Level A -->
-    <section aria-labelledby="bio-heading">
-      <h2 id="bio-heading">Brief Biography</h2>
-      <p>
-        B.A. Stanford University &mdash; Classics, Chinese;
-        M.A. Harvard University &mdash; Chinese;
-        Ph.D. Stanford University &mdash; Philosophy.<br>
-        <strong>Areas of Expertise:</strong> Chinese Philosophy, Ancient Greek Philosophy, Ethics
-      </p>
-    </section>
+      <section aria-labelledby="bio-heading">
+        <h2 id="bio-heading">Brief Biography</h2>
+        <p>
+          B.A. Stanford University &mdash; Classics, Chinese;
+          M.A. Harvard University &mdash; Chinese;
+          Ph.D. Stanford University &mdash; Philosophy.<br>
+          <strong>Areas of Expertise:</strong> Chinese Philosophy, Ancient Greek Philosophy, Ethics
+        </p>
+      </section>
 
-    <section aria-labelledby="courses-heading">
-      <h2 id="courses-heading">Courses Taught</h2>
-      <!-- COACHING TIP: To add a new course, copy any <li> and
+      <section aria-labelledby="courses-heading">
+        <h2 id="courses-heading">Courses Taught</h2>
+        <!-- COACHING TIP: To add a new course, copy any <li> and
            paste it in the appropriate location. -->
-      <ul class="pub-list">
-        <li>Philosophy 1003: Introduction to Philosophy &mdash; Philosophy and Human Nature</li>
-        <li>Philosophy 3013: Plato's <em>Republic</em></li>
-        <li>Philosophy 3013: Philosophy of the <em>Daodejing</em></li>
-        <li>Philosophy 3500: Ethics</li>
-        <li>Philosophy 3100 (previously 4110): Ancient Greek Philosophy</li>
-        <li>Philosophy 4140/6140: Classical Chinese Philosophy</li>
-        <li>Philosophy 5110/6110: Topics in Ancient &amp; Medieval Philosophy</li>
-        <li>Philosophy 5145/6145 (previously 5150/6150): Topics in Classical Chinese Philosophy</li>
-        <li>Philosophy 5193/6190: Plato (co-taught with Elijah Millgram)</li>
-        <li>Philosophy 5500/6500: Contemporary Ethics</li>
-        <li>Philosophy 7010: Graduate Proseminar</li>
-        <li>Philosophy 7500: Graduate Seminar on Virtue Ethics</li>
-        <li>Honors 2101: Intellectual Traditions &mdash; Antiquity and the Beginning of the Common Era</li>
-        <li>Honors 2104: Intellectual Traditions &mdash; Cross Cultural Dialogues</li>
-      </ul>
-    </section>
+        <ul class="pub-list">
+          <li>Philosophy 1003: Introduction to Philosophy &mdash; Philosophy and Human Nature</li>
+          <li>Philosophy 3013: Plato's <em>Republic</em></li>
+          <li>Philosophy 3013: Philosophy of the <em>Daodejing</em></li>
+          <li>Philosophy 3500: Ethics</li>
+          <li>Philosophy 3100 (previously 4110): Ancient Greek Philosophy</li>
+          <li>Philosophy 4140/6140: Classical Chinese Philosophy</li>
+          <li>Philosophy 5110/6110: Topics in Ancient &amp; Medieval Philosophy</li>
+          <li>Philosophy 5145/6145 (previously 5150/6150): Topics in Classical Chinese Philosophy</li>
+          <li>Philosophy 5193/6190: Plato (co-taught with Elijah Millgram)</li>
+          <li>Philosophy 5500/6500: Contemporary Ethics</li>
+          <li>Philosophy 7010: Graduate Proseminar</li>
+          <li>Philosophy 7500: Graduate Seminar on Virtue Ethics</li>
+          <li>Honors 2101: Intellectual Traditions &mdash; Antiquity and the Beginning of the Common Era</li>
+          <li>Honors 2104: Intellectual Traditions &mdash; Cross Cultural Dialogues</li>
+        </ul>
+      </section>
 
-    <section aria-labelledby="pubs-heading">
-      <h2 id="pubs-heading">Selected Publications</h2>
+      <section aria-labelledby="pubs-heading">
+        <h2 id="pubs-heading">Selected Publications</h2>
 
-      <!--
+        <!--
         CHANGE #17: <h3> subcategories; complete publication list restored.
         WHY: "Articles, Books, Essays" etc. were <b> text inside <ul> tags —
         invalid HTML (content must be inside <li>). <h3> is correct.
@@ -370,296 +464,368 @@ footer a:hover, footer a:focus {
           4. If no URL yet, omit <a href> and write plain text.
       -->
 
-      <h3>Articles, Books, Essays, and Translations</h3>
+        <h3>Articles, Books, Essays, and Translations</h3>
 
-      <ul class="pub-list">
+        <ul class="pub-list">
 
-        <li>
-          <a href="https://www.academia.edu/142962139/Solving_a_Puzzle_about_a_Source_for_Matteo_Riccis_Jiaoyou_lun_%E4%BA%A4%E5%8F%8B%E8%AB%96">&ldquo;Solving a Puzzle about a Source for Matteo Ricci&rsquo;s <em>Jiaoyou lun</em> &#20132;&#21451;&#35542;&rdquo;</a>
-          in <a href="https://www.fondazionepolanco.org/catalog/ENG/scheda-prodotto/184-riviste/hhroccjggr-archivum-historicum-societatis-iesu-2025-i.html"><em>Archivum Historicum Societatis Iesu (AHSI)</em>, vol. XCIV, fasc. 187 (2025-I), 123&ndash;30</a>.
-        </li>
+          <li>
+            <a
+              href="https://www.academia.edu/142962139/Solving_a_Puzzle_about_a_Source_for_Matteo_Riccis_Jiaoyou_lun_%E4%BA%A4%E5%8F%8B%E8%AB%96">&ldquo;Solving
+              a Puzzle about a Source for Matteo Ricci&rsquo;s <em>Jiaoyou lun</em> &#20132;&#21451;&#35542;&rdquo;</a>
+            in <a
+              href="https://www.fondazionepolanco.org/catalog/ENG/scheda-prodotto/184-riviste/hhroccjggr-archivum-historicum-societatis-iesu-2025-i.html"><em>Archivum
+                Historicum Societatis Iesu (AHSI)</em>, vol. XCIV, fasc. 187 (2025-I), 123&ndash;30</a>.
+          </li>
 
-        <li>
-          <a href="https://doi.org/10.1093/oxfordhb/9780199945498.013.0030">&ldquo;Xunzi and the Authority of Tradition&rdquo;</a>
-          in Justin Tiwald, ed. <a href="https://academic.oup.com/edited-volume/59901"><em>The Oxford Handbook of Chinese Philosophy</em></a>. New York: Oxford University Press, 2025.
-        </li>
+          <li>
+            <a href="https://doi.org/10.1093/oxfordhb/9780199945498.013.0030">&ldquo;Xunzi and the Authority of
+              Tradition&rdquo;</a>
+            in Justin Tiwald, ed. <a href="https://academic.oup.com/edited-volume/59901"><em>The Oxford Handbook of
+                Chinese Philosophy</em></a>. New York: Oxford University Press, 2025.
+          </li>
 
-        <li>
-          &ldquo;Debating the Proper <em>Wei</em> to Rule the State in Early Chinese and Greek Political Philosophy: On the Emotional Influence of Rulers&rdquo;
-          in Douglas Cairns and Curie Vir&aacute;g, eds.
-          <a href="https://global.oup.com/academic/product/in-the-mind-in-the-body-in-the-world-9780197681800"><em>In the Mind, in the Body, in the World: Emotions in Early China and Ancient Greece</em></a>.
-          New York: Oxford University Press, 2024.
-        </li>
+          <li>
+            &ldquo;Debating the Proper <em>Wei</em> to Rule the State in Early Chinese and Greek Political Philosophy:
+            On the Emotional Influence of Rulers&rdquo;
+            in Douglas Cairns and Curie Vir&aacute;g, eds.
+            <a href="https://global.oup.com/academic/product/in-the-mind-in-the-body-in-the-world-9780197681800"><em>In
+                the Mind, in the Body, in the World: Emotions in Early China and Ancient Greece</em></a>.
+            New York: Oxford University Press, 2024.
+          </li>
 
-        <li>
-          <a href="https://doi.org/10.1093/oxfordhb/9780197539798.013.3">&ldquo;Ethics and the Arts in Early China&rdquo;</a>
-          in James Harold, ed.
-          <a href="https://global.oup.com/academic/product/the-oxford-handbook-of-ethics-and-art-9780197539798"><em>The Oxford Handbook of Ethics and Art</em></a>.
-          New York: Oxford University Press, 2023.
-        </li>
+          <li>
+            <a href="https://doi.org/10.1093/oxfordhb/9780197539798.013.3">&ldquo;Ethics and the Arts in Early
+              China&rdquo;</a>
+            in James Harold, ed.
+            <a href="https://global.oup.com/academic/product/the-oxford-handbook-of-ethics-and-art-9780197539798"><em>The
+                Oxford Handbook of Ethics and Art</em></a>.
+            New York: Oxford University Press, 2023.
+          </li>
 
-        <li>
-          <a href="https://jcpc.skku.edu/_common/do.php?a=full&b=22&bidx=4013&aidx=44399">&ldquo;Revisiting Xunzi&rsquo;s Philosophy of Language&rdquo;</a>
-          in <em>Journal of Confucian Philosophy and Culture</em> 36 (2021), p. 163&ndash;84.
-        </li>
+          <li>
+            <a href="https://jcpc.skku.edu/_common/do.php?a=full&b=22&bidx=4013&aidx=44399">&ldquo;Revisiting
+              Xunzi&rsquo;s Philosophy of Language&rdquo;</a>
+            in <em>Journal of Confucian Philosophy and Culture</em> 36 (2021), p. 163&ndash;84.
+          </li>
 
-        <li>
-          <a href="https://doi.org/10.24204/ejpr.2021.3333">&ldquo;On Ritual and Legislation&rdquo;</a>
-          in <em>European Journal for Philosophy of Religion</em> 13:2 (2021), p. 45&ndash;64.
-        </li>
+          <li>
+            <a href="https://doi.org/10.24204/ejpr.2021.3333">&ldquo;On Ritual and Legislation&rdquo;</a>
+            in <em>European Journal for Philosophy of Religion</em> 13:2 (2021), p. 45&ndash;64.
+          </li>
 
-        <li>
-          <a href="https://rdcu.be/b1psX">&ldquo;Xunzi and the Problem of Different Strokes for Different Folks: On Tang Siufu&rsquo;s <em>Self-realization through Confucian Learning</em>&rdquo;</a>
-          in <em>Dao</em> 19:1 (2020), p. 113&ndash;120.
-        </li>
+          <li>
+            <a href="https://rdcu.be/b1psX">&ldquo;Xunzi and the Problem of Different Strokes for Different Folks: On
+              Tang Siufu&rsquo;s <em>Self-realization through Confucian Learning</em>&rdquo;</a>
+            in <em>Dao</em> 19:1 (2020), p. 113&ndash;120.
+          </li>
 
-        <li>
-          <span lang="zh-TW">柏拉图论&lsquo;仁&rsquo;</span> (&ldquo;On Confucian Benevolence in the Philosophy of Plato&rdquo;),
-          tr. <a href="http://sh.shufe.edu.cn/ea/f2/c3504a125682/page.htm"><span lang="zh-TW">刘旻娇 Liu Minjiao</span></a>,
-          in <a href="http://item.jd.com/12367525.html"><span lang="zh-TW">伦理学术</span> <em>Academia Ethica</em> 4</a>,
-          ed. <span lang="zh-TW">邓安庆 Deng Anqing</span>, June 2018, p. 29&ndash;45.
-        </li>
+          <li>
+            <span lang="zh-TW">柏拉图论&lsquo;仁&rsquo;</span> (&ldquo;On Confucian Benevolence in the Philosophy of
+            Plato&rdquo;),
+            tr. <a href="http://sh.shufe.edu.cn/ea/f2/c3504a125682/page.htm"><span lang="zh-TW">刘旻娇 Liu
+                Minjiao</span></a>,
+            in <a href="http://item.jd.com/12367525.html"><span lang="zh-TW">伦理学术</span> <em>Academia Ethica</em> 4</a>,
+            ed. <span lang="zh-TW">邓安庆 Deng Anqing</span>, June 2018, p. 29&ndash;45.
+          </li>
 
-        <li>
-          &ldquo;Extended Knowledge and Confucian Tradition&rdquo;
-          in J. Adam Carter, Andy Clark, Jesper Kallestrup, S. Orestis Palermos, and Duncan Pritchard, eds.
-          <a href="https://global.oup.com/academic/product/extended-epistemology-9780198769811"><em>Extended Epistemology</em></a>.
-          New York: Oxford University Press, 2018.
-        </li>
+          <li>
+            &ldquo;Extended Knowledge and Confucian Tradition&rdquo;
+            in J. Adam Carter, Andy Clark, Jesper Kallestrup, S. Orestis Palermos, and Duncan Pritchard, eds.
+            <a href="https://global.oup.com/academic/product/extended-epistemology-9780198769811"><em>Extended
+                Epistemology</em></a>.
+            New York: Oxford University Press, 2018.
+          </li>
 
-        <!-- Dao Companion — edited volume with cover image -->
-        <li>
-          <div class="book-entry">
-            <div class="book-text">
-              <a href="http://link.springer.com/book/10.1007%2F978-94-017-7745-2"><em>Dao Companion to the Philosophy of Xunzi</em></a>.
-              Dordrecht: Springer, 2016. (Editor; Chinese translation forthcoming.)<br><br>
-              In addition to editing, contributions include:
-              <ul class="pub-list">
-                <li><a href="http://link.springer.com/chapter/10.1007/978-94-017-7745-2_3">&ldquo;Ethics in the <em>Xunzi</em>&rdquo;</a></li>
-                <li><a href="http://link.springer.com/chapter/10.1007/978-94-017-7745-2_7">&ldquo;Xunzi on Moral Psychology&rdquo;</a></li>
-                <li><a href="http://link.springer.com/chapter/10.1007/978-94-017-7745-2_9">&ldquo;Xunzi on Music&rdquo;</a> (co-authored with <a href="https://commons.mtholyoke.edu/jharold/">James E. Harold</a>)</li>
-                <li><a href="http://link.springer.com/chapter/10.1007/978-94-017-7745-2_16">&ldquo;The <em>Xunzi</em> in Edo Japan&rdquo;</a> (translation of <span lang="zh-TW">《荀子》在江戶日本</span>, originally by <a href="https://www1.ihp.sinica.edu.tw/Fellows/Hung-Yueh_Lan"><span lang="zh-TW">藍弘岳 Lan Hung-Yueh</span></a>)</li>
-              </ul>
+          <!-- Dao Companion — edited volume with cover image -->
+          <li>
+            <div class="book-entry">
+              <div class="book-text">
+                <a href="http://link.springer.com/book/10.1007%2F978-94-017-7745-2"><em>Dao Companion to the Philosophy
+                    of Xunzi</em></a>.
+                Dordrecht: Springer, 2016. (Editor; Chinese translation forthcoming.)<br><br>
+                In addition to editing, contributions include:
+                <ul class="pub-list">
+                  <li><a href="http://link.springer.com/chapter/10.1007/978-94-017-7745-2_3">&ldquo;Ethics in the
+                      <em>Xunzi</em>&rdquo;</a></li>
+                  <li><a href="http://link.springer.com/chapter/10.1007/978-94-017-7745-2_7">&ldquo;Xunzi on Moral
+                      Psychology&rdquo;</a></li>
+                  <li><a href="http://link.springer.com/chapter/10.1007/978-94-017-7745-2_9">&ldquo;Xunzi on
+                      Music&rdquo;</a> (co-authored with <a href="https://commons.mtholyoke.edu/jharold/">James E.
+                      Harold</a>)</li>
+                  <li><a href="http://link.springer.com/chapter/10.1007/978-94-017-7745-2_16">&ldquo;The <em>Xunzi</em>
+                      in Edo Japan&rdquo;</a> (translation of <span lang="zh-TW">《荀子》在江戶日本</span>, originally by <a
+                      href="https://www1.ihp.sinica.edu.tw/Fellows/Hung-Yueh_Lan"><span lang="zh-TW">藍弘岳 Lan
+                        Hung-Yueh</span></a>)</li>
+                </ul>
+              </div>
+              <!-- COACHING TIP: Book cover image. Always include alt text describing the book. -->
+              <img src="DCXZCover.jpg" width="105" height="160"
+                alt="Cover of Dao Companion to the Philosophy of Xunzi, edited by Eric L. Hutton">
             </div>
-            <!-- COACHING TIP: Book cover image. Always include alt text describing the book. -->
-            <img src="DCXZCover.jpg" width="105" height="160"
-                 alt="Cover of Dao Companion to the Philosophy of Xunzi, edited by Eric L. Hutton">
-          </div>
-        </li>
+          </li>
 
-        <li>
-          <a href="http://www.oxfordbibliographies.com/view/document/obo-9780195396577/obo-9780195396577-0290.xml">&ldquo;Confucius&rdquo;</a>,
-          entry for <a href="http://www.oxfordbibliographies.com"><em>Oxford Bibliographies Online</em></a>, philosophy list.
-          Edited by Duncan Pritchard. New York: Oxford University Press, 2015.
-          (DOI: <a href="http://www.oxfordbibliographies.com/view/document/obo-9780195396577/obo-9780195396577-0290.xml">10.1093/OBO/9780195396577-0290</a>)
-        </li>
+          <li>
+            <a
+              href="http://www.oxfordbibliographies.com/view/document/obo-9780195396577/obo-9780195396577-0290.xml">&ldquo;Confucius&rdquo;</a>,
+            entry for <a href="http://www.oxfordbibliographies.com"><em>Oxford Bibliographies Online</em></a>,
+            philosophy list.
+            Edited by Duncan Pritchard. New York: Oxford University Press, 2015.
+            (DOI: <a
+              href="http://www.oxfordbibliographies.com/view/document/obo-9780195396577/obo-9780195396577-0290.xml">10.1093/OBO/9780195396577-0290</a>)
+          </li>
 
-        <li>
-          <a href="http://link.springer.com/article/10.1007/s11712-015-9445-y">&ldquo;On the &lsquo;Virtue Turn&rsquo; and the Problem of Categorizing Chinese Thought&rdquo;</a>
-          in <em>Dao</em> 14:3 (2015), p. 331&ndash;353.
-          (With <a href="http://link.springer.com/article/10.1007/s11712-015-9455-9">erratum</a> to the published version.)
-        </li>
+          <li>
+            <a href="http://link.springer.com/article/10.1007/s11712-015-9445-y">&ldquo;On the &lsquo;Virtue Turn&rsquo;
+              and the Problem of Categorizing Chinese Thought&rdquo;</a>
+            in <em>Dao</em> 14:3 (2015), p. 331&ndash;353.
+            (With <a href="http://link.springer.com/article/10.1007/s11712-015-9455-9">erratum</a> to the published
+            version.)
+          </li>
 
-        <li>
-          &ldquo;Xunzi and Virtue Ethics&rdquo; in Lorraine Besser-Jones and Michael Slote, eds.
-          <a href="http://www.amazon.com/Routledge-Companion-Virtue-Philosophy-Companions/dp/0415659337/"><em>The Routledge Companion to Virtue Ethics</em></a>.
-          New York: Routledge, 2015.
-        </li>
+          <li>
+            &ldquo;Xunzi and Virtue Ethics&rdquo; in Lorraine Besser-Jones and Michael Slote, eds.
+            <a href="http://www.amazon.com/Routledge-Companion-Virtue-Philosophy-Companions/dp/0415659337/"><em>The
+                Routledge Companion to Virtue Ethics</em></a>.
+            New York: Routledge, 2015.
+          </li>
 
-        <!-- Xunzi: The Complete Text — translation with cover image -->
-        <li>
-          <div class="book-entry">
-            <div class="book-text">
-              <a href="http://press.princeton.edu/titles/10386.html"><em>Xunzi: The Complete Text</em></a>.
-              Princeton: Princeton University Press, 2014.
-              (Revised paperback edition, 2016, <a href="http://www.amazon.com/Xunzi-The-Complete-Text/dp/0691169314/">available here</a>.)<br><br>
-              Formal academic reviews at:
-              <a href="http://ndpr.nd.edu/news/56415-xunzi-the-complete-text/"><em>Notre Dame Philosophical Reviews</em></a>,
-              <a href="http://journals.cambridge.org/abstract_S1356186315000024"><em>Journal of the Royal Asiatic Society</em></a>,
-              <a href="http://link.springer.com/article/10.1007/s11712-015-9465-7"><em>Dao</em></a>
+          <!-- Xunzi: The Complete Text — translation with cover image -->
+          <li>
+            <div class="book-entry">
+              <div class="book-text">
+                <a href="http://press.princeton.edu/titles/10386.html"><em>Xunzi: The Complete Text</em></a>.
+                Princeton: Princeton University Press, 2014.
+                (Revised paperback edition, 2016, <a
+                  href="http://www.amazon.com/Xunzi-The-Complete-Text/dp/0691169314/">available here</a>.)<br><br>
+                Formal academic reviews at:
+                <a href="http://ndpr.nd.edu/news/56415-xunzi-the-complete-text/"><em>Notre Dame Philosophical
+                    Reviews</em></a>,
+                <a href="http://journals.cambridge.org/abstract_S1356186315000024"><em>Journal of the Royal Asiatic
+                    Society</em></a>,
+                <a href="http://link.springer.com/article/10.1007/s11712-015-9465-7"><em>Dao</em></a>
+              </div>
+              <img src="XZTransCover.jpg" width="105" height="160"
+                alt="Cover of Xunzi: The Complete Text, translated by Eric L. Hutton">
             </div>
-            <img src="XZTransCover.jpg" width="105" height="160"
-                 alt="Cover of Xunzi: The Complete Text, translated by Eric L. Hutton">
-          </div>
-        </li>
+          </li>
 
-        <li>
-          &ldquo;Mengzi, Xunzi, and the Legacy of Confucius&rdquo; in Michael Nylan, ed.,
-          <a href="http://books.wwnorton.com/books/The-Analects/"><em>The Analects: A Norton Critical Edition</em></a>.
-          New York: W. W. Norton &amp; Company, 2014.
-          (<strong>Please note the following errors in this publication: (1) footnote 4 on p. 173 should be labeled as an editor&rsquo;s note &mdash; it does not reflect my own view, and (2) the first seven lines of footnote 6 on p. 174 are an erroneous and redundant version of materials in footnotes 2 and 3 on p. 173; the formulations in footnotes 2 and 3 are to be preferred, and the last sentence of footnote 6 should have appeared at the end of footnote 2.</strong>)
-        </li>
+          <li>
+            &ldquo;Mengzi, Xunzi, and the Legacy of Confucius&rdquo; in Michael Nylan, ed.,
+            <a href="http://books.wwnorton.com/books/The-Analects/"><em>The Analects: A Norton Critical
+                Edition</em></a>.
+            New York: W. W. Norton &amp; Company, 2014.
+            (<strong>Please note the following errors in this publication: (1) footnote 4 on p. 173 should be labeled as
+              an editor&rsquo;s note &mdash; it does not reflect my own view, and (2) the first seven lines of footnote
+              6 on p. 174 are an erroneous and redundant version of materials in footnotes 2 and 3 on p. 173; the
+              formulations in footnotes 2 and 3 are to be preferred, and the last sentence of footnote 6 should have
+              appeared at the end of footnote 2.</strong>)
+          </li>
 
-        <li>
-          <a href="http://link.springer.com/article/10.1007%2Fs11712-011-9248-8">&ldquo;A Note on the <em>Xunzi</em>&rsquo;s Explanation of <em>Xing</em> &#24615;&rdquo;</a>
-          in <em>Dao</em> 10:4 (2011), p. 527&ndash;530.
-        </li>
+          <li>
+            <a href="http://link.springer.com/article/10.1007%2Fs11712-011-9248-8">&ldquo;A Note on the
+              <em>Xunzi</em>&rsquo;s Explanation of <em>Xing</em> &#24615;&rdquo;</a>
+            in <em>Dao</em> 10:4 (2011), p. 527&ndash;530.
+          </li>
 
-        <li>
-          <a href="http://hutton.philosophy.utah.edu/HFZ.pdf">&ldquo;Han Feizi&rsquo;s Criticism of Confucianism and its Implications for Virtue Ethics&rdquo;</a>
-          in <em>Journal of Moral Philosophy</em> 5:3 (2008), p. 423&ndash;453.
-          Reprinted in Thom Brooks, ed. <em>Ethics and Moral Philosophy</em>. Leiden and Boston: Brill, 2011.
-        </li>
+          <li>
+            <a href="http://hutton.philosophy.utah.edu/HFZ.pdf">&ldquo;Han Feizi&rsquo;s Criticism of Confucianism and
+              its Implications for Virtue Ethics&rdquo;</a>
+            in <em>Journal of Moral Philosophy</em> 5:3 (2008), p. 423&ndash;453.
+            Reprinted in Thom Brooks, ed. <em>Ethics and Moral Philosophy</em>. Leiden and Boston: Brill, 2011.
+          </li>
 
-        <li>
-          &ldquo;Un-Democratic Values in Plato and Xunzi&rdquo; in Marthe Chandler and Ronnie Littlejohn, eds.
-          <a href="http://www.amazon.com/Polishing-Chinese-Mirror-Essays-Rosemont/dp/1592670830/"><em>Polishing the Chinese Mirror: Essays in Honor of Henry Rosemont, Jr.</em></a>
-          New York: Global Scholarly Publications, 2008.
-        </li>
+          <li>
+            &ldquo;Un-Democratic Values in Plato and Xunzi&rdquo; in Marthe Chandler and Ronnie Littlejohn, eds.
+            <a href="http://www.amazon.com/Polishing-Chinese-Mirror-Essays-Rosemont/dp/1592670830/"><em>Polishing the
+                Chinese Mirror: Essays in Honor of Henry Rosemont, Jr.</em></a>
+            New York: Global Scholarly Publications, 2008.
+          </li>
 
-        <li>
-          &ldquo;Character, Situationism, and Early Confucian Thought&rdquo; in
-          <a href="http://link.springer.com/article/10.1007/s11098-005-1729-3"><em>Philosophical Studies</em></a>
-          127:1 (2006), p. 37&ndash;58.
-        </li>
+          <li>
+            &ldquo;Character, Situationism, and Early Confucian Thought&rdquo; in
+            <a href="http://link.springer.com/article/10.1007/s11098-005-1729-3"><em>Philosophical Studies</em></a>
+            127:1 (2006), p. 37&ndash;58.
+          </li>
 
-        <li>
-          &ldquo;Xunzi&rdquo; (translation of selected passages) in:
-          <!-- CHANGE #18: Fixed nested list structure
+          <li>
+            &ldquo;Xunzi&rdquo; (translation of selected passages) in:
+            <!-- CHANGE #18: Fixed nested list structure
                WHY: Original had invalid disconnected <ul> blocks.
                A proper nested list has <li> containing a child <ul>.
                COACHING TIP: You generally will not need nested lists
                when adding new publications — just add a flat <li>. -->
-          <ul class="pub-list">
-            <li>
-              Philip J. Ivanhoe and Bryan W. Van Norden, eds.
-              <em><a href="http://www.hackettpublishing.com/asian-studies/readings-in-classical-chinese-philosophy">Readings in Classical Chinese Philosophy</a></em>.
-              2nd ed. Hackett Publishing Co., 2006; revised and expanded 3rd ed., 2023.
-              Partially reprinted in Joel J. Kupperman, ed.
-              <em><a href="http://www.hackettpublishing.com/human-nature-a-reader-2710">Human Nature: A Reader</a></em>.
-              Hackett Publishing Co., 2012.
-            </li>
-            <li>
-              Robin Wang, ed.
-              <em><a href="http://www.hackettpublishing.com/images-of-women-in-chinese-thought-and-culture">Images of Women in Chinese Thought and Culture</a></em>.
-              Hackett Publishing Co., 2003.
-            </li>
-          </ul>
-        </li>
+            <ul class="pub-list">
+              <li>
+                Philip J. Ivanhoe and Bryan W. Van Norden, eds.
+                <em><a
+                    href="http://www.hackettpublishing.com/asian-studies/readings-in-classical-chinese-philosophy">Readings
+                    in Classical Chinese Philosophy</a></em>.
+                2nd ed. Hackett Publishing Co., 2006; revised and expanded 3rd ed., 2023.
+                Partially reprinted in Joel J. Kupperman, ed.
+                <em><a href="http://www.hackettpublishing.com/human-nature-a-reader-2710">Human Nature: A
+                    Reader</a></em>.
+                Hackett Publishing Co., 2012.
+              </li>
+              <li>
+                Robin Wang, ed.
+                <em><a href="http://www.hackettpublishing.com/images-of-women-in-chinese-thought-and-culture">Images of
+                    Women in Chinese Thought and Culture</a></em>.
+                Hackett Publishing Co., 2003.
+              </li>
+            </ul>
+          </li>
 
-        <li>
-          &ldquo;Moral Reasoning in Aristotle and Xunzi&rdquo; in
-          <a href="http://onlinelibrary.wiley.com/doi/10.1111/1540-6253.00088/abstract"><em>Journal of Chinese Philosophy</em></a>
-          29:3 (2002), p. 355&ndash;384.
-        </li>
+          <li>
+            &ldquo;Moral Reasoning in Aristotle and Xunzi&rdquo; in
+            <a href="http://onlinelibrary.wiley.com/doi/10.1111/1540-6253.00088/abstract"><em>Journal of Chinese
+                Philosophy</em></a>
+            29:3 (2002), p. 355&ndash;384.
+          </li>
 
-        <li>
-          &ldquo;Moral Connoisseurship in Mengzi&rdquo; in Xiusheng Liu and Philip J. Ivanhoe, eds.
-          <em><a href="http://www.hackettpublishing.com/asian-studies/essays-on-the-moral-philosophy-of-mengzi">Essays on the Moral Philosophy of Mengzi</a></em>.
-          Hackett Publishing Co., 2002.
-        </li>
+          <li>
+            &ldquo;Moral Connoisseurship in Mengzi&rdquo; in Xiusheng Liu and Philip J. Ivanhoe, eds.
+            <em><a href="http://www.hackettpublishing.com/asian-studies/essays-on-the-moral-philosophy-of-mengzi">Essays
+                on the Moral Philosophy of Mengzi</a></em>.
+            Hackett Publishing Co., 2002.
+          </li>
 
-        <li>
-          &ldquo;Does Xunzi Have a Consistent Theory of Human Nature?&rdquo; in T.C. Kline and P.J. Ivanhoe, eds.
-          <em><a href="http://www.hackettpublishing.com/asian-studies/virtue-nature-and-moral-agency-in-the-xunzi">Virtue, Nature, and Moral Agency in the Xunzi</a></em>.
-          Hackett Publishing Co., 2000.
-        </li>
+          <li>
+            &ldquo;Does Xunzi Have a Consistent Theory of Human Nature?&rdquo; in T.C. Kline and P.J. Ivanhoe, eds.
+            <em><a
+                href="http://www.hackettpublishing.com/asian-studies/virtue-nature-and-moral-agency-in-the-xunzi">Virtue,
+                Nature, and Moral Agency in the Xunzi</a></em>.
+            Hackett Publishing Co., 2000.
+          </li>
 
-      </ul>
+        </ul>
 
-      <h3>Reviews</h3>
+        <h3>Reviews</h3>
 
-      <ul class="pub-list">
+        <ul class="pub-list">
 
-        <li>
-          <a href="https://ndpr.nd.edu/reviews/origins-of-moral-political-philosophy-in-early-china-contestation-of-humaneness-justice-and-personal-freedom/">Review of Tao Jiang, <em>Origins of Moral-Political Philosophy in Early China: Contestation of Humaneness, Justice, and Personal Freedom</em>, Oxford University Press, 2021</a>
-          for <a href="http://ndpr.nd.edu/"><em>Notre Dame Philosophical Reviews</em></a>, April 2023.
-        </li>
+          <li>
+            <a
+              href="https://ndpr.nd.edu/reviews/origins-of-moral-political-philosophy-in-early-china-contestation-of-humaneness-justice-and-personal-freedom/">Review
+              of Tao Jiang, <em>Origins of Moral-Political Philosophy in Early China: Contestation of Humaneness,
+                Justice, and Personal Freedom</em>, Oxford University Press, 2021</a>
+            for <a href="http://ndpr.nd.edu/"><em>Notre Dame Philosophical Reviews</em></a>, April 2023.
+          </li>
 
-        <li>
-          <a href="http://ndpr.nd.edu/news/the-bloomsbury-research-handbook-of-chinese-philosophy-methodologies/">Review of Sor-hoon Tan (ed.), <em>The Bloomsbury Research Handbook of Chinese Philosophy Methodologies</em>, Bloomsbury, 2016</a>
-          for <a href="http://ndpr.nd.edu/"><em>Notre Dame Philosophical Reviews</em></a>, May 2017.
-        </li>
+          <li>
+            <a href="http://ndpr.nd.edu/news/the-bloomsbury-research-handbook-of-chinese-philosophy-methodologies/">Review
+              of Sor-hoon Tan (ed.), <em>The Bloomsbury Research Handbook of Chinese Philosophy Methodologies</em>,
+              Bloomsbury, 2016</a>
+            for <a href="http://ndpr.nd.edu/"><em>Notre Dame Philosophical Reviews</em></a>, May 2017.
+          </li>
 
-        <li>
-          <a href="http://ndpr.nd.edu/news/63626-classical-confucian-political-thought-a-new-interpretation/">Review of Loubna El Amine, <em>Classical Confucian Political Thought: A New Interpretation</em>, Princeton University Press, 2015</a>
-          for <a href="http://ndpr.nd.edu/"><em>Notre Dame Philosophical Reviews</em></a>, January 2016.
-        </li>
+          <li>
+            <a href="http://ndpr.nd.edu/news/63626-classical-confucian-political-thought-a-new-interpretation/">Review
+              of Loubna El Amine, <em>Classical Confucian Political Thought: A New Interpretation</em>, Princeton
+              University Press, 2015</a>
+            for <a href="http://ndpr.nd.edu/"><em>Notre Dame Philosophical Reviews</em></a>, January 2016.
+          </li>
 
-        <li>
-          <a href="http://link.springer.com/article/10.1007/s11712-014-9390-1">Review of <span lang="zh-TW">東方朔 [林宏星]</span> Dongfang Shuo [Lin Hongxing], <em>The Quest for Rationality: Collected Research on the Thought of Xunzi</em> <span lang="zh-TW">合理性之尋求: 荀子思想研究論集</span>. Taipei: National Taiwan University Press, 2011</a>
-          for <em>Dao</em> 13:3 (2014), p. 421&ndash;424.
-        </li>
+          <li>
+            <a href="http://link.springer.com/article/10.1007/s11712-014-9390-1">Review of <span lang="zh-TW">東方朔
+                [林宏星]</span> Dongfang Shuo [Lin Hongxing], <em>The Quest for Rationality: Collected Research on the
+                Thought of Xunzi</em> <span lang="zh-TW">合理性之尋求: 荀子思想研究論集</span>. Taipei: National Taiwan University
+              Press, 2011</a>
+            for <em>Dao</em> 13:3 (2014), p. 421&ndash;424.
+          </li>
 
-        <li>
-          <a href="http://www.jstor.org/stable/10.1086/671403">Review of Amy Olberding, <em>Moral Exemplars in the Analects: The Good Person is That</em>, Routledge, 2012</a>
-          for <em>Ethics</em> 124:1 (2013), p. 197&ndash;201.
-        </li>
+          <li>
+            <a href="http://www.jstor.org/stable/10.1086/671403">Review of Amy Olberding, <em>Moral Exemplars in the
+                Analects: The Good Person is That</em>, Routledge, 2012</a>
+            for <em>Ethics</em> 124:1 (2013), p. 197&ndash;201.
+          </li>
 
-        <li>
-          <a href="http://link.springer.com/article/10.1007/s11712-007-9032-y">Review of Kurtis Hagen, <em>The Philosophy of Xunzi: A Reconstruction</em>, Open Court, 2007</a>
-          for <em>Dao</em> 6:4 (2007), p. 417&ndash;421, and
-          <a href="http://link.springer.com/article/10.1007/s11712-007-9030-0">A Further Response to Kurtis Hagen</a>
-          in <em>Dao</em> 6:4 (2007), p. 445&ndash;446.
-        </li>
+          <li>
+            <a href="http://link.springer.com/article/10.1007/s11712-007-9032-y">Review of Kurtis Hagen, <em>The
+                Philosophy of Xunzi: A Reconstruction</em>, Open Court, 2007</a>
+            for <em>Dao</em> 6:4 (2007), p. 417&ndash;421, and
+            <a href="http://link.springer.com/article/10.1007/s11712-007-9030-0">A Further Response to Kurtis Hagen</a>
+            in <em>Dao</em> 6:4 (2007), p. 445&ndash;446.
+          </li>
 
-        <li>
-          <a href="https://www.humesociety.org/uploads/issues/v30n1/383321.pdf">Review of Xiusheng Liu, <em>Mencius, Hume, and the Foundations of Ethics</em>, Ashgate, 2003</a>
-          for <em>Hume Studies</em> 30:1 (2004), p. 201&ndash;203.
-        </li>
+          <li>
+            <a href="https://www.humesociety.org/uploads/issues/v30n1/383321.pdf">Review of Xiusheng Liu, <em>Mencius,
+                Hume, and the Foundations of Ethics</em>, Ashgate, 2003</a>
+            for <em>Hume Studies</em> 30:1 (2004), p. 201&ndash;203.
+          </li>
 
-        <li>
-          <a href="https://ndpr.nd.edu/reviews/the-ambitions-of-curiosity-understanding-the-world-in-ancient-greece-and-china/">Review of G.E.R. Lloyd, <em>The Ambitions of Curiosity: Understanding the World in Ancient Greece and China</em>, Cambridge University Press, 2002</a>
-          for <a href="http://ndpr.nd.edu/"><em>Notre Dame Philosophical Reviews</em></a>, March 2003.
-        </li>
+          <li>
+            <a
+              href="https://ndpr.nd.edu/reviews/the-ambitions-of-curiosity-understanding-the-world-in-ancient-greece-and-china/">Review
+              of G.E.R. Lloyd, <em>The Ambitions of Curiosity: Understanding the World in Ancient Greece and China</em>,
+              Cambridge University Press, 2002</a>
+            for <a href="http://ndpr.nd.edu/"><em>Notre Dame Philosophical Reviews</em></a>, March 2003.
+          </li>
 
-      </ul>
+        </ul>
 
-      <h3>Other Short Works</h3>
+        <h3>Other Short Works</h3>
 
-      <ul class="pub-list">
+        <ul class="pub-list">
 
-        <li>
-          Prologue (in English with Portuguese translation) to
-          <em><a href="https://www.academia.edu/128659341/Teoria_do_Conhecimento_do_Fil%C3%B3sofo_Xun_tradu%C3%A7%C3%B5es_comentadas_dos_cap%C3%ADtulos_epistemol%C3%B3gicos_do_Xunzi_vol_1">Teoria do Conhecimento do Fil&oacute;sofo Xun: tradu&ccedil;&otilde;es comentadas dos cap&iacute;tulos epistemol&oacute;gicos do Xunzi</em></a>,
-          vol. 1, tr. Matheus Oliva da Costa. Rio de Janeiro: Universidade do Estado do Rio de Janeiro, 2025.
-        </li>
+          <li>
+            Prologue (in English with Portuguese translation) to
+            <em><a
+                href="https://www.academia.edu/128659341/Teoria_do_Conhecimento_do_Fil%C3%B3sofo_Xun_tradu%C3%A7%C3%B5es_comentadas_dos_cap%C3%ADtulos_epistemol%C3%B3gicos_do_Xunzi_vol_1">Teoria
+                do Conhecimento do Fil&oacute;sofo Xun: tradu&ccedil;&otilde;es comentadas dos cap&iacute;tulos
+                epistemol&oacute;gicos do Xunzi</em></a>,
+            vol. 1, tr. Matheus Oliva da Costa. Rio de Janeiro: Universidade do Estado do Rio de Janeiro, 2025.
+          </li>
 
-        <li>
-          Prologue (in Spanish) to
-          <em><a href="https://www.miraguano-sa.es/libros/rectificar-los-nombres-xun-zi-zheng-ming-un-capitulo-fundamental-en-el-pensamiento-confuciano/9788478134830/">Xun Kuang: Rectificar Los Nombres (Xun Zi / Zheng Ming)</a></em>,
-          tr. Nu&ntilde;o A. Valenzuela Alonso. Madrid: Miraguano Ediciones, 2019.
-          (The original English text of this Prologue is available <a href="http://hutton.philosophy.utah.edu/ZhengMingPrologue.pdf">here</a>.)
-        </li>
+          <li>
+            Prologue (in Spanish) to
+            <em><a
+                href="https://www.miraguano-sa.es/libros/rectificar-los-nombres-xun-zi-zheng-ming-un-capitulo-fundamental-en-el-pensamiento-confuciano/9788478134830/">Xun
+                Kuang: Rectificar Los Nombres (Xun Zi / Zheng Ming)</a></em>,
+            tr. Nu&ntilde;o A. Valenzuela Alonso. Madrid: Miraguano Ediciones, 2019.
+            (The original English text of this Prologue is available <a
+              href="http://hutton.philosophy.utah.edu/ZhengMingPrologue.pdf">here</a>.)
+          </li>
 
-      </ul>
+        </ul>
 
-    </section>
+      </section>
 
-    <section aria-labelledby="other-heading">
-      <h2 id="other-heading">Other Information</h2>
-      <!-- COACHING TIP: Add links to additional standalone pages here.
+      <section aria-labelledby="other-heading">
+        <h2 id="other-heading">Other Information</h2>
+        <!-- COACHING TIP: Add links to additional standalone pages here.
            Use descriptive link text — never "click here" or "here". -->
-      <ul class="pub-list">
-        <li>
-          <a href="https://hutton.philosophy.utah.edu/Advice.html">Advice for Students Wanting to Pursue a PhD in Chinese Thought</a>
-        </li>
-      </ul>
-    </section>
+        <ul class="pub-list">
+          <li>
+            <a href="https://hutton.philosophy.utah.edu/Advice.html">Advice for Students Wanting to Pursue a PhD in
+              Chinese Thought</a>
+          </li>
+        </ul>
+      </section>
 
-  </main>
+    </main>
 
-  <!-- CHANGE #19: <footer> landmark replaces <center><table>
+    <!-- CHANGE #19: <footer> landmark replaces <center><table>
        WCAG RULE: 1.3.1 (Info and Relationships) - Level A
        COACHING TIP: Edit this section only if contact info changes. -->
-  <footer>
-    <nav aria-label="Footer navigation">
-      [ <a href="https://philosophy.utah.edu">home</a> ]
-      [ <a href="https://philosophy.utah.edu/directory/index.php">people</a> ]
-      [ <a href="https://philosophy.utah.edu/undergraduate/courses.php">courses</a> ]
+    <footer>
+      <nav aria-label="Footer navigation">
+        [ <a href="https://philosophy.utah.edu">home</a> ]
+        [ <a href="https://philosophy.utah.edu/directory/index.php">people</a> ]
+        [ <a href="https://philosophy.utah.edu/undergraduate/courses.php">courses</a> ]
+        <br>
+        [ <a href="https://www.hum.utah.edu">college of humanities</a> ]
+        [ <a href="https://www.utah.edu">university of utah</a> ]
+      </nav>
       <br>
-      [ <a href="https://www.hum.utah.edu">college of humanities</a> ]
-      [ <a href="https://www.utah.edu">university of utah</a> ]
-    </nav>
-    <br>
-    comments: <a href="mailto:eric.hutton@utah.edu">eric.hutton@utah.edu</a><br>
-    <small>
-      2021 &copy; University of Utah, College of Humanities<br>
-      * <a href="https://www.utah.edu/disclaimer/">disclaimer</a> *
-    </small>
-  </footer>
+      comments: <a href="mailto:eric.hutton@utah.edu">eric.hutton@utah.edu</a><br>
+      <small>
+        2021 &copy; University of Utah, College of Humanities<br>
+        * <a href="https://www.utah.edu/disclaimer/">disclaimer</a> *
+      </small>
+    </footer>
 
-</div><!-- end .page-wrapper -->
+  </div><!-- end .page-wrapper -->
 
 </body>
+
 </html>
